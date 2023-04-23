@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Botão de cópia animado</title>
+    <style>
+      /* Estilos do botão */
+      .btn {
+        position: relative;
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background: linear-gradient(to bottom, #fff, #4CAF50);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+      
+      /* Estilo do botão quando o mouse está sobre ele */
+      .btn:hover {
+        background: linear-gradient(to bottom, #fff, #3e8e41);
+      }
+      
+      /* Estilo do ícone de cópia quando o mouse está sobre ele */
+      .btn:hover::after {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Hello World!</p>
+    <button class="btn" onclick="copyToClipboard('Hello World!')">Copiar</button>
+    
+    <script>
+      function copyToClipboard(text) {
+        // Cria um elemento temporário para colocar o texto
+        var tempInput = document.createElement("input");
+        tempInput.value = text;
+        document.body.appendChild(tempInput);
+        
+        // Seleciona o texto no elemento temporário
+        tempInput.select();
+        
+        // Copia o texto selecionado para a área de transferência do usuário
+        document.execCommand("copy");
+        
+        // Remove o elemento temporário
+        document.body.removeChild(tempInput);
+      }
+    </script>
+  </body>
+</html>
+
